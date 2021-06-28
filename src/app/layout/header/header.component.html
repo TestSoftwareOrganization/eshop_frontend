@@ -1,0 +1,34 @@
+<mat-toolbar style="background-color: black; color: whitesmoke;">
+    <img src="/assets/header.png" alt="image"  height="200px" tag>
+    <mat-toolbar-row>
+      <button mat-icon-button>
+        <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
+      </button>
+      <h1>Eshop</h1>
+      <span class="menu-spacer"></span>
+      <div>
+        <a mat-button>Products</a>
+        <a mat-button>ORDER</a>
+        <a mat-button>Contacts</a>
+        <a mat-button>Login</a>
+      </div>
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+
+  <mat-sidenav-container>
+    <mat-sidenav #sidenav style="background: black;">
+      <mat-nav-list >
+  
+        <a mat-list-item style=" color: whitesmoke"> Products </a>
+        <a mat-list-item style=" color: whitesmoke"> ORDER </a>
+        <a mat-list-item style=" color: whitesmoke"> Contacts </a>
+      
+  
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <div style="height: 88vh;"></div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+  
