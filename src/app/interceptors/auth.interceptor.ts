@@ -14,14 +14,15 @@ export class AuthInterceptor implements HttpInterceptor {
 
   private authenticationService: AuthenticationService;
 
-  private loginUrl: string = environment.apiUrl + '/user/login';
-  private registerUrl: string = environment.apiUrl + '/user/register';
+  private loginUrl: string = "/api/users/login";
+  private registerUrl: string = "/api/users/register";
 
   constructor(authenticationService: AuthenticationService) {
     this.authenticationService = authenticationService;
   }
 
   intercept(httpRequest: HttpRequest<any>, httpHandler: HttpHandler): Observable<HttpEvent<any>> {
+    // 
     if (httpRequest.url.includes(this.loginUrl)) {
       return httpHandler.handle(httpRequest);
     }

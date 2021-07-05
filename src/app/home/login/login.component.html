@@ -1,0 +1,26 @@
+<mat-card style="text-align: center; padding-bottom: 30px; padding-top: 30px; background-color: floralwhite;">
+  <mat-card-title>Login</mat-card-title>
+  <mat-card-content>
+
+    <form #loginForm="ngForm" [formGroup]="form" (ngSubmit)="onLogin(loginForm.value)">
+      <p> 
+        <mat-form-field>
+           <input type="text" formControlName="username"
+          ngModel required matInput placeholder="Username">
+        </mat-form-field>
+      </p>
+      
+
+      <p>
+        <mat-form-field>
+          <input type="password" matInput placeholder="Password" formControlName="password">
+        </mat-form-field>
+      </p>
+
+      <div class="button">
+        <button type="submit" mat-raised-button style="width: 17%;">Login</button>
+      </div>
+
+    </form>
+  </mat-card-content>
+</mat-card>

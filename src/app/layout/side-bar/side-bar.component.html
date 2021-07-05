@@ -1,0 +1,23 @@
+<div style="background-color: black; color: whitesmoke; border-bottom-right-radius: 40px 20px;
+border: black 6px double">
+<button mat-icon-button>
+    <mat-icon (click)="sidenav.toggle();">menu</mat-icon>
+  </button>
+  <button mat-icon-button style="margin-left: 26px">Login</button>
+   |
+  <button mat-icon-button style="margin-left: 5px">Register</button>
+
+</div>
+  <mat-sidenav-container style="width: 80%; background-color: black;">
+    <mat-sidenav #sidenav style="background: black; width: 100%;">
+      <mat-nav-list >
+        <a mat-list-item style=" color: whitesmoke"> Products </a>
+        <a mat-list-item style=" color: whitesmoke"> ORDER </a>
+        <a mat-list-item style=" color: whitesmoke"> Contacts </a>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <div style="height: 88vh;"></div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+  

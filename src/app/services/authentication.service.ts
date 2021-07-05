@@ -18,14 +18,17 @@ export class AuthenticationService {
 
   }
 
-  public login(user: User): Observable<HttpResponse<any> | HttpErrorResponse> {
-    return this.http.post<HttpResponse<any> | HttpErrorResponse>
-      (`${this.host}/user/login`, user, { observe: 'response' });
+  public login(user: User): Observable<HttpResponse<User>> {
+    console.log("BEFORE LOGINNN");
+    
+    console.log(user);
+    
+    return this.http.post<User>(`/api/users/login`, user, { observe: 'response' });
   }
 
-  public register(user: User): Observable<User | HttpErrorResponse> {
-    return this.http.post<User | HttpErrorResponse>
-      (`${this.host}/user/register`, user);
+  public register(user: User): Observable<User> {
+    return this.http.post<User>
+      (`${this.host}/users/register`, user);
   }
 
   public logout(): void {
@@ -69,10 +72,10 @@ export class AuthenticationService {
     this.loadToken();
     if (this.token != undefined && this.token !== '') {
       // check if username is not null or empty
-      if (this.jwtHelper.decodeToken(this.token).sub != null || ''){
-        if(!this.jwtHelper.isTokenExpired(this.token)){
-            this.loggedInUsername = this.jwtHelper.decodeToken(this.token).sub;
-            return true;
+      if (this.jwtHelper.decodeToken(this.token).sub != null || '') {
+        if (!this.jwtHelper.isTokenExpired(this.token)) {
+          this.loggedInUsername = this.jwtHelper.decodeToken(this.token).sub;
+          return true;
         }
       }
     } else {

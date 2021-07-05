@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
-import { SidebarComponent } from './sidebar/sidebar.component';
 import { SharedModule } from '../shared/shared.module';
+import { SideBarComponent } from './side-bar/side-bar.component';
 
 
 
@@ -11,7 +11,7 @@ import { SharedModule } from '../shared/shared.module';
   declarations: [
     HeaderComponent,
     FooterComponent,
-    SidebarComponent
+    SideBarComponent
   ],
   imports: [
     CommonModule,
@@ -20,7 +20,7 @@ import { SharedModule } from '../shared/shared.module';
   exports: [
     FooterComponent,
     HeaderComponent,
-    SidebarComponent
+    SideBarComponent
   ]
 })
 export class LayoutModule { }
