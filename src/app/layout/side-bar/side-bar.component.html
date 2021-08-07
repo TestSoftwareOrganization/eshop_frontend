@@ -3,15 +3,16 @@ border: black 6px double">
 <button mat-icon-button>
     <mat-icon (click)="sidenav.toggle();">menu</mat-icon>
   </button>
-  <button mat-icon-button style="margin-left: 26px">Login</button>
+  <simple-user [inputUser]="" ></simple-user>
+  <button mat-icon-button style="margin-left: 26px" (click)="navigateToLogin()"  >Login</button>
    |
-  <button mat-icon-button style="margin-left: 5px">Register</button>
+  <button mat-icon-button style="margin-left: 5px" (click)="navigateToRegister()" >Register</button>
 
 </div>
   <mat-sidenav-container style="width: 80%; background-color: black;">
     <mat-sidenav #sidenav style="background: black; width: 100%;">
       <mat-nav-list >
-        <a mat-list-item style=" color: whitesmoke"> Products </a>
+        <a mat-list-item style=" color: whitesmoke" (click)="navigateToUserManagement()"> User managament </a>
         <a mat-list-item style=" color: whitesmoke"> ORDER </a>
         <a mat-list-item style=" color: whitesmoke"> Contacts </a>
       </mat-nav-list>

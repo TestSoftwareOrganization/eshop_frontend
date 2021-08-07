@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'side-bar',
@@ -7,9 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SideBarComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
+  }
+
+  navigateToLogin(){
+    this.router.navigateByUrl("/login");
+  }
+
+  navigateToRegister(){
+    this.router.navigateByUrl("/register");
+  }
+
+  navigateToUserManagement(){
+    this.router.navigateByUrl("/admin/userManagament");
   }
 
 }

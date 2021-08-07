@@ -11,10 +11,12 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { AuthenticationGuard } from './guards/authentication.guard';
 import { HomeModule } from './home/home.module';
+import { userManagementComponent } from './admin/user-management/user-management.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    userManagementComponent
   ],
   imports: [
     BrowserModule,

@@ -4,7 +4,7 @@ import { FormControl, FormGroup} from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { HeaderType } from 'src/app/enum/header-type.enum';
-import { User } from 'src/app/model/user';
+import { CreateUserModel } from 'src/app/model/create-user-model';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
@@ -18,12 +18,12 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   constructor(private router: Router, private authenticationService: AuthenticationService) { }
 
-  public onLogin(user: User) {
+  public onLogin(user: CreateUserModel) {
     console.log("Login with user: ");
     console.log(user);
     this.subscriptions.push(
       this.authenticationService.login(user).subscribe(
-        (response: HttpResponse<User>) => {
+        (response: HttpResponse<CreateUserModel>) => {
           const token = response.headers.get(HeaderType.JWT_TOKEN);
           this.authenticationService.saveToken(token);
           this.authenticationService.addUserToLocalCache(response.body);

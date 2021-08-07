@@ -2,7 +2,7 @@ import { HttpClient, HttpClientModule, HttpErrorResponse, HttpResponse } from '@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { User } from '../model/user';
+import { CreateUserModel } from '../model/create-user-model';
 import { JwtHelperService } from "@auth0/angular-jwt";
 
 @Injectable({
@@ -18,17 +18,16 @@ export class AuthenticationService {
 
   }
 
-  public login(user: User): Observable<HttpResponse<User>> {
+  public login(user: CreateUserModel): Observable<HttpResponse<CreateUserModel>> {
     console.log("BEFORE LOGINNN");
-    
+
     console.log(user);
-    
-    return this.http.post<User>(`/api/users/login`, user, { observe: 'response' });
+
+    return this.http.post<CreateUserModel>(`/api/users/login`, user, { observe: 'response' });
   }
 
-  public register(user: User): Observable<User> {
-    return this.http.post<User>
-      (`${this.host}/users/register`, user);
+  public register(user: CreateUserModel): Observable<HttpResponse<CreateUserModel>> {
+    return this.http.post<CreateUserModel>(`/api/users`, user, { observe: 'response' });
   }
 
   public logout(): void {
@@ -44,11 +43,11 @@ export class AuthenticationService {
     localStorage.setItem('token', token);
   }
 
-  public addUserToLocalCache(user: User): void {
+  public addUserToLocalCache(user: CreateUserModel): void {
     localStorage.setItem('user', JSON.stringify(user));
   }
 
-  public getUserFromLocalCache(): User | null {
+  public getUserFromLocalCache(): CreateUserModel | null {
     let user = localStorage.getItem('user');
     if (user != null) {
       return JSON.parse(user);

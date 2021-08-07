@@ -15,7 +15,7 @@ export class AuthInterceptor implements HttpInterceptor {
   private authenticationService: AuthenticationService;
 
   private loginUrl: string = "/api/users/login";
-  private registerUrl: string = "/api/users/register";
+  private registerUrl: string = "/api/users";
 
   constructor(authenticationService: AuthenticationService) {
     this.authenticationService = authenticationService;

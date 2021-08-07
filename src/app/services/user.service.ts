@@ -2,34 +2,30 @@ import { HttpClient, HttpClientModule, HttpErrorResponse, HttpResponse } from '@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { User } from '../model/user';
+import { CreateUserModel } from '../model/create-user-model';
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  private host = environment.apiUrl;
+  protected host = environment.apiUrl;
 
   constructor(private http: HttpClient) { }
 
-  public getUsers(): Observable<User[] | HttpErrorResponse> {
-    return this.http.get<User[]>(`${this.host}/user/list`);
+  public getUsers(): Observable<CreateUserModel[] | HttpErrorResponse> {
+    return this.http.get<CreateUserModel[]>(`${this.host}/users/list`);
   }
 
-  public register(formData: FormData): Observable<User> {
-    return this.http.post<User>(`${this.host}/user/register`, formData);
-  }
-
-  public updateUser(formData: FormData): Observable<User> {
-    return this.http.patch<User>(`${this.host}/user`, formData);
+  public updateUser(formData: FormData): Observable<CreateUserModel> {
+    return this.http.patch<CreateUserModel>(`${this.host}/user`, formData);
   }
 
   // TODO: UNSECURED WAY... NEED TO BE CHANGED
-  public addUsersToLocalStorage(users: User[]): void {
+  public addUsersToLocalStorage(users: CreateUserModel[]): void {
     localStorage.setItem('users', JSON.stringify(users));
   }
 
-  public getUsersFromLocalCache(): User[] | null {
+  public getUsersFromLocalCache(): CreateUserModel[] | null {
     let users = localStorage.getItem("users");
     if (users != null) {
       return JSON.parse(users);
@@ -38,7 +34,7 @@ export class UserService {
     }
   }
 
-  public createUserFormData(user: User): FormData {
+  public createUserFormData(user: CreateUserModel): FormData {
     const formData = new FormData();
 
     formData.append('firstName', user.firstName);
@@ -49,4 +45,6 @@ export class UserService {
 
     return formData;
   }
+
+  
 }

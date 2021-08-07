@@ -1,0 +1,32 @@
+<mat-card>
+    <mat-card-title style="text-align: center; margin-bottom: 20px; margin-top:5px">User Management</mat-card-title>
+    
+    <mat-table [dataSource]="users" class="mat-elevation-z8" style=" width: 70%; margin-left: 15%;">
+
+        <ng-container matColumnDef="username">
+            <mat-header-cell mat-header-cell *matHeaderCellDef>Username </mat-header-cell>
+            <mat-cell mat-cell *matCellDef="let element"> {{element.username}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="firstName">
+            <mat-header-cell mat-header-cell *matHeaderCellDef>Firstname </mat-header-cell>
+            <mat-cell mat-cell *matCellDef="let element"> {{element.firstName}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="lastName">
+            <mat-header-cell mat-header-cell *matHeaderCellDef> Lastname </mat-header-cell>
+            <mat-cell mat-cell *matCellDef="let element"> {{element.lastName}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="email">
+            <mat-header-cell mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
+            <mat-cell mat-cell *matCellDef="let element"> {{element.email}} </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row matRipple *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+    </mat-table>
+    <mat-card-content>
+    </mat-card-content>
+</mat-card>>
